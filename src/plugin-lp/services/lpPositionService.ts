@@ -6,10 +6,6 @@ import type {
   LPPositionResponse,
 } from "../types.ts";
 
-// Uniswap V3 subgraph URL
-const UNISWAP_V3_SUBGRAPH =
-  "https://gateway-arbitrum.network.thegraph.com/api/subgraphs/name/messari/uniswap-v3-arbitrum";
-
 // Ethereum mainnet provider URL with your Alchemy API key
 const ETHEREUM_RPC_URL =
   "https://eth-mainnet.g.alchemy.com/v2/FJ1fEapVnMmnAMfcas8DqMiupixlPSFY";
@@ -21,8 +17,6 @@ export class LPPositionService implements ILPPositionService {
 
   private provider: ethers.JsonRpcProvider | null = null;
   private alchemyKey: string | null = null;
-  private lastApiCallTime: number = 0;
-  private readonly API_CALL_INTERVAL = 2000; // 2 seconds
 
   async initialize(runtime: IAgentRuntime): Promise<void> {
     this.alchemyKey =
